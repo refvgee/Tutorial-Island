@@ -52,9 +52,6 @@ public final class PriestSection extends TutorialSection {
             case 580:
                 getTabs().open(Tab.FRIENDS);
                 break;
-            case 590:
-                getTabs().open(Tab.IGNORES);
-                break;
             case 600:
                 talkToInstructor();
                 break;

@@ -71,12 +71,6 @@ public final class MiningSection extends TutorialSection {
                     talkToInstructor();
                 }
                 break;
-            case 270:
-                prospect(Rock.TIN);
-                break;
-            case 280:
-                prospect(Rock.COPPER);
-                break;
             case 290:
                 talkToInstructor();
                 break;
@@ -122,8 +116,6 @@ public final class MiningSection extends TutorialSection {
     private void smith() {
         if (!SMITH_AREA.contains(myPosition())) {
             getWalking().walk(SMITH_AREA);
-        } else if (!"Bronze bar".equals(getInventory().getSelectedItemName())) {
-            getInventory().getItem("Bronze bar").interact("Use");
         } else if (getObjects().closest("Anvil").interact("Use")) {
             Sleep.sleepUntil(() -> getDaggerWidget().isPresent(), 5000, 600);
         }
@@ -138,9 +130,7 @@ public final class MiningSection extends TutorialSection {
     }
 
     private void smelt() {
-        if (!"Tin ore".equals(getInventory().getSelectedItemName())) {
-            getInventory().getItem("Tin ore").interact("Use");
-        } else if (getObjects().closest("Furnace").interact("Use")) {
+        if (getObjects().closest("Furnace").interact("Use")) {
             Sleep.sleepUntil(() -> getInventory().contains("Bronze bar"), 5000, 600);
         }
     }

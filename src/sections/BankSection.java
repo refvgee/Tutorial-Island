@@ -3,6 +3,7 @@ package sections;
 import org.osbot.rs07.api.map.Area;
 import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.model.RS2Object;
+import org.osbot.rs07.api.ui.Tab;
 import util.Sleep;
 import util.widget.CachedWidget;
 import util.widget.filters.WidgetActionFilter;
@@ -86,7 +87,7 @@ public final class BankSection extends TutorialSection {
                 talkToInstructor();
                 break;
             case 531:
-                openAccountManagementTab();
+                getTabs().open(Tab.ACCOUNT_MANAGEMENT);
                 break;
             case 532:
                 talkToInstructor();
@@ -102,12 +103,6 @@ public final class BankSection extends TutorialSection {
     private boolean openDoorAtPosition(final Position position) {
         RS2Object door = getObjects().closest(obj -> obj.getName().equals("Door") && obj.getPosition().equals(position));
         return door != null && door.interact("Open");
-    }
-
-    private void openAccountManagementTab() {
-        if (accountManagementWidget.isVisible(getWidgets()) && accountManagementWidget.interact(getWidgets())) {
-            Sleep.sleepUntil(() -> getProgress() == 532, 5000, 600);
-        }
     }
 
 }

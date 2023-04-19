@@ -81,7 +81,11 @@ public final class WizardSection extends TutorialSection {
                 }
                 break;
             case 670:
-                if (getDialogues().isPendingOption()) {
+                if (getWidgets().get(788,15,2) != null) {
+                    getWidgets().get(788,15,2).interact();
+                } else if (getWidgets().get(788,40,2) != null) {
+                    getWidgets().get(788,40,2).interact();
+                } else if (getDialogues().isPendingOption()) {
                     getDialogues().selectOption("No, I'm not planning to do that.", "Yes.", "I'm fine, thanks.");
                 } else if (getMagic().isSpellSelected()) {
                     getMagic().deselectSpell();
